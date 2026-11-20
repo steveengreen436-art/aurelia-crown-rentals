@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURELIA CROWN RENTALS | 100% Human Hair Wig Rentals for Dates & Events</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --midnight: #04091a;
+      --royal-blue: #0a193c;
+      --gold-light: #fef08a;
+      --gold-mid: #eab308;
+      --gold-deep: #b45309;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at top center, #0c2154 0%, #04091a 55%, #02050f 100%);
+      color: #f8fafc;
+      overflow-x: hidden;
+      padding-bottom: 80px;
+    }
+    @media (min-width: 768px) {
+      body { padding-bottom: 0; }
+    }
+    .font-royal { font-family: 'Cinzel', serif; }
+    .font-script { font-family: 'Cormorant Garamond', serif; }
+    .gold-text {
+      background: linear-gradient(135deg, #fef9c3 0%, #facc15 45%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-foil-btn {
+      background: linear-gradient(135deg, #fde047 0%, #eab308 50%, #ca8a04 100%);
+      color: #04091a;
+      box-shadow: 0 10px 28px -6px rgba(234, 179, 8, 0.45);
+    }
+    .royal-glass {
+      background: rgba(10, 24, 58, 0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(250, 204, 21, 0.28);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+    }
+    .bokeh {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(253, 224, 71, 0.7) 0%, rgba(234, 179, 8, 0) 70%);
+      animation: floatBokeh ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes floatBokeh {
+      0%, 100% { transform: translateY(0) scale(0.85); opacity: 0.2; }
+      50% { transform: translateY(-25px) scale(1.25); opacity: 0.85; }
+    }
+    .hair-silhouette {
+      transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #04091a; }
+    ::-webkit-scrollbar-thumb { background: #ca8a04; border-radius: 999px; }
+  </style>
+</head>
+<body class="antialiased selection:bg-yellow-400 selection:text-slate-950">
+
+  <!-- Ambient Candlelight & Gold Bokeh Layer -->
+  <div id="bokeh-layer" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+  <!-- Top VIP Ribbon -->
+  <div class="bg-gradient-to-r from-[#061230] via-[#132c6b] to-[#061230] border-b border-yellow-400/30 text-yellow-200 text-[11px] sm:text-xs py-2 px-4 text-center relative z-50 tracking-wide">
+    👑 <strong>100% HUMAN HAIR FOR RENT</strong> • Sanitized, Silk-Pressed & Ready-to-Wear • Contact Eddie: <strong>+231 77 020 9652</strong>
+  </div>
+
+  <!-- Sticky Royal Header -->
+  <nav class="sticky top-0 z-50 bg-[#04091a]/90 backdrop-blur-xl border-b border-yellow-400/20">
+    <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between gap-2">
+      <a href="#" class="flex items-center gap-3 shrink-0">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-300 via-amber-500 to-yellow-200 p-[2px] shadow-lg shadow-yellow-500/25">
+          <div class="w-full h-full bg-[#06112b] rounded-full flex items-center justify-center font-royal font-extrabold text-lg text-yellow-300">
+            AC
+          </div>
+        </div>
+        <div>
+          <span class="font-royal text-base sm:text-xl font-bold tracking-[0.12em] gold-text block leading-none">AURELIA CROWN</span>
+          <span class="text-[9px] uppercase tracking-[0.26em] text-blue-200/80 font-semibold">100% Human Hair Rentals</span>
+        </div>
+      </a>
+
+      <div class="hidden xl:flex items-center gap-6 text-xs uppercase tracking-widest font-semibold text-blue-100">
+        <a href="#occasions" class="hover:text-yellow-300 transition">Occasion Stylist</a>
+        <a href="#measuring-studio" class="hover:text-yellow-300 transition">Length & Cap Scale</a>
+        <a href="#rental-vault" class="hover:text-yellow-300 transition">Rental Vault</a>
+        <a href="#checkout-cart" class="hover:text-yellow-300 transition">Booking Cart</a>
+      </div>
+
+      <!-- Currency Toggle, Direct Call, WhatsApp & Rental Cart Buttons -->
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <!-- USD / INR Rupees Toggle -->
+        <div class="flex bg-blue-950/90 border border-yellow-400/35 rounded-full p-0.5 text-[11px] font-extrabold">
+          <button onclick="setCurrency('USD')" id="curr-usd" class="px-2.5 py-1.5 rounded-full bg-yellow-400 text-slate-950 transition">USD $</button>
+          <button onclick="setCurrency('INR')" id="curr-inr" class="px-2.5 py-1.5 rounded-full text-yellow-200 hover:text-white transition">INR ₹</button>
+        </div>
+
+        <a href="tel:+231770209652" title="Call Eddie +231 77 020 9652" class="bg-blue-950/90 hover:bg-yellow-400 hover:text-slate-950 border border-yellow-400/40 text-yellow-300 text-xs font-bold px-3 py-2.5 rounded-full flex items-center gap-1.5 transition">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+          <span class="hidden sm:inline">Call</span>
+        </a>
+
+        <a href="https://wa.me/231770209652?text=Hello%20Eddie%20at%20Aurelia%20Crown%20Rentals!%20%F0%9F%91%91%20I%20have%20an%20upcoming%20event%20and%20would%20like%20to%20rent%20a%20100%25%20Human%20Hair%20unit." target="_blank" rel="noopener" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold px-3 py-2.5 rounded-full shadow-lg shadow-emerald-500/20 flex items-center gap-1.5 transition">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.03 2c-5.52 0-10 4.48-10 10 0 1.76.46 3.48 1.34 5L2 22l5.15-1.35c1.48.81 3.16 1.24 4.88 1.24h.01c5.52 0 10-4.48 10-10 0-2.67-1.04-5.18-2.93-7.07A9.93 9.93 0 0012.03 2zm5.82 14.28c-.25.7-1.44 1.34-1.99 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.69-.63-2.98-1.29-4.92-4.29-5.07-4.49-.15-.2-1.21-1.61-1.21-3.07 0-1.46.76-2.18 1.03-2.48.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.08.15.13.33.03.53-.1.2-.15.33-.3.5-.15.18-.31.4-.45.53-.15.15-.3.31-.13.61.18.3.78 1.29 1.68 2.09 1.15 1.03 2.13 1.35 2.43 1.5.3.15.48.13.65-.08.18-.2.75-.88.95-1.18.2-.3.4-.25.67-.15.28.1 1.75.83 2.05.98.3.15.5.22.57.35.08.12.08.72-.17 1.42z"/></svg>
+          <span class="hidden md:inline">WhatsApp</span>
+        </a>
+
+        <button onclick="scrollToCart()" class="gold-foil-btn text-xs font-extrabold px-3.5 py-2.5 rounded-full flex items-center gap-1.5 transition transform active:scale-95">
+          <span>👜</span>
+          <span id="nav-cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative pt-10 pb-20 px-4 overflow-hidden">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center relative z-10">
+      <div class="lg:col-span-7 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/40 px-4 py-1.5 rounded-full text-xs text-yellow-200 font-bold mb-5">
+          <span>★★★★★</span>
+          <span>PREMIUM QUALITY • 100% HUMAN HAIR • AFFORDABLE RENTAL</span>
+        </div>
+
+        <h1 class="font-royal text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.03] tracking-tight mb-3">
+          <span class="gold-text block">100% HUMAN HAIR</span>
+          <span class="inline-block bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-500 text-slate-950 px-5 py-1 rounded-xl text-2xl sm:text-4xl mt-2 shadow-xl">
+            FOR RENT
+          </span>
+        </h1>
+
+        <p class="font-script italic text-2xl sm:text-4xl text-yellow-200 mt-4 mb-2">
+          Going for a Date or Events? And you want to look good? Worry no more!
+        </p>
+        <p class="text-blue-100/85 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed">
+          Why spend a fortune for one night when you can rent a salon-styled, HD-lace <strong>100% Human Hair</strong> unit for a fraction of the price? Soft, silky, natural hairline, and sanitized before every booking. Contact <strong>Eddie (+231 77 020 9652)</strong> for orders & location details.
+        </p>
+
+        <!-- 5 Flyer Guarantees Pills -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-7 text-xs font-bold">
+          <span class="bg-blue-950/90 border border-yellow-400/30 px-3 py-1.5 rounded-full text-yellow-200">✓ 100% Human Hair</span>
+          <span class="bg-blue-950/90 border border-yellow-400/30 px-3 py-1.5 rounded-full text-yellow-200">✓ Soft & Silky</span>
+          <span class="bg-blue-950/90 border border-yellow-400/30 px-3 py-1.5 rounded-full text-yellow-200">✓ Long Lasting</span>
+          <span class="bg-blue-950/90 border border-yellow-400/30 px-3 py-1.5 rounded-full text-yellow-200">✓ Natural Look</span>
+          <span class="bg-blue-950/90 border border-yellow-400/30 px-3 py-1.5 rounded-full text-yellow-200">✓ Affordable Rental</span>
+        </div>
+
+        <!-- Direct Call, WhatsApp & Location Inquiry Redirect Buttons -->
+        <div class="flex flex-col sm:flex-row flex-wrap gap-3 justify-center lg:justify-start">
+          <a href="https://wa.me/231770209652?text=Hello%20Eddie%20at%20Aurelia%20Crown%20Rentals!%20%F0%9F%91%91%20I%20want%20to%20rent%20a%20wig%20today!" target="_blank" rel="noopener" class="gold-foil-btn font-extrabold px-6 py-4 rounded-2xl text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition transform hover:-translate-y-0.5">
+            <span>💬 Rent Today on WhatsApp</span>
+          </a>
+          <a href="tel:+231770209652" class="bg-blue-950/90 hover:bg-blue-900 border border-yellow-400/45 text-yellow-200 font-extrabold px-6 py-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 transition">
+            <span>📞 Call Eddie: +231 77 020 9652</span>
+          </a>
+          <a href="https://wa.me/231770209652?text=Hello%20Eddie!%20%F0%9F%93%8D%20Please%20share%20your%20exact%20pickup%20%2F%20delivery%20location%20details." target="_blank" rel="noopener" class="bg-emerald-500/20 hover:bg-emerald-500 hover:text-slate-950 border border-emerald-400/40 text-emerald-300 font-extrabold px-5 py-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 transition">
+            <span>📍 Ask Location on WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Interactive Occasion & Hair Matchmaker Card -->
+      <div id="occasions" class="lg:col-span-5">
+        <div class="royal-glass rounded-[2rem] p-6 relative">
+          <div class="flex items-center justify-between border-b border-yellow-400/20 pb-3 mb-4">
+            <div>
+              <span class="text-[10px] uppercase tracking-[0.25em] text-yellow-300 font-bold">AI Occasion Concierge</span>
+              <h2 class="font-royal text-xl sm:text-2xl font-bold text-white">Choose Your Event</h2>
+            </div>
+            <span class="text-2xl">👑</span>
+          </div>
+
+          <!-- 5 Occasion Buttons -->
+          <div class="grid grid-cols-5 gap-1.5 mb-4" id="occasion-buttons"></div>
+
+          <!-- Dynamic Stylist Explanation Box -->
+          <div id="occasion-panel" class="bg-gradient-to-b from-[#0d2459] to-[#06112b] border border-yellow-400/25 rounded-2xl p-5 space-y-3">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTERACTIVE MEASURING SCALE STUDIO -->
+  <section id="measuring-studio" class="max-w-7xl mx-auto px-4 pt-12 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <span class="text-xs uppercase tracking-[0.25em] text-yellow-300 font-bold">Precision Fit & Length Scale</span>
+      <h2 class="font-royal text-3xl sm:text-5xl font-bold text-white mt-2">Interactive Hair & Cap Measuring Scale</h2>
+      <p class="text-blue-100/80 text-sm mt-2">
+        Slide both scales below to see exactly where the hair falls on your body for your event, and verify your glueless cap circumference before booking with Eddie.
+      </p>
+    </div>
+
+    <div class="royal-glass rounded-3xl p-6 sm:p-8 grid lg:grid-cols-12 gap-8 items-center">
+      <!-- Left: Visual Silhouette & Vertical Measuring Ruler -->
+      <div class="lg:col-span-5 bg-[#050d24] rounded-2xl p-5 border border-yellow-400/20 flex items-center justify-around">
+        <svg viewBox="0 0 160 250" class="w-40 h-60">
+          <circle cx="70" cy="40" r="21" fill="#172e66" stroke="#facc15" stroke-width="1.5"/>
+          <path d="M34 95 Q70 76 106 95 L115 152 L25 152 Z" fill="#0f214d" stroke="#3b82f6" stroke-width="1"/>
+          <path id="scale-hair-path" class="hair-silhouette" d="M46 36 Q70 8 94 36 L106 146 Q70 156 34 146 Z" fill="url(#royalHairGrad)" opacity="0.95"/>
+          <line x1="128" y1="60" x2="128" y2="235" stroke="#facc15" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <circle id="ruler-marker" cx="128" cy="146" r="5" fill="#facc15"/>
+          <text x="136" y="68" fill="#93c5fd" font-size="8">12" Chin</text>
+          <text x="136" y="106" fill="#93c5fd" font-size="8">16" Lob</text>
+          <text x="136" y="148" fill="#fde047" font-size="8" font-weight="bold">22" Mid</text>
+          <text x="136" y="190" fill="#93c5fd" font-size="8">28" Waist</text>
+          <text x="136" y="232" fill="#facc15" font-size="8" font-weight="bold">34" Hip</text>
+          <defs>
+            <linearGradient id="royalHairGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1e1b18"/>
+              <stop offset="60%" stop-color="#090807"/>
+              <stop offset="100%" stop-color="#eab308"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <div class="space-y-3 text-left max-w-[165px]">
+          <div>
+            <span class="text-[10px] uppercase tracking-wider text-blue-300">Selected Length</span>
+            <p id="scale-inch-display" class="font-royal text-3xl font-extrabold gold-text">22 Inches</p>
+            <p id="scale-body-zone" class="text-xs text-yellow-200 font-semibold">Mid-Back Glamour</p>
+          </div>
+          <div class="bg-blue-950/90 p-3 rounded-xl border border-yellow-400/20">
+            <span class="text-[10px] text-blue-300 block">Stylist Tip:</span>
+            <p id="scale-tip" class="text-[11px] text-white leading-snug mt-0.5">Ideal for date nights & photos—moves effortlessly without tangling.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Dual Interactive Measuring Scales -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="bg-blue-950/60 p-5 rounded-2xl border border-yellow-400/20">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-yellow-300">1. Hair Length Measuring Scale (Inches)</span>
+            <span id="scale-rate-preview" class="text-xs font-bold bg-yellow-400/20 text-yellow-200 px-3 py-1 rounded-full">Rental from $25 / day</span>
+          </div>
+          <input type="range" id="length-scale-slider" min="12" max="34" step="2" value="22" oninput="updateMeasuringScales()" class="w-full accent-yellow-400 cursor-pointer">
+          <div class="flex justify-between text-[10px] text-blue-200 mt-1.5 font-semibold">
+            <span>12"</span><span>16"</span><span>20"</span><span>24"</span><span>28"</span><span>34"</span>
+          </div>
+        </div>
+
+        <div class="bg-blue-950/60 p-5 rounded-2xl border border-yellow-400/20">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-yellow-300">2. Head Cap Measuring Scale (cm / inches)</span>
+            <span id="cap-cm-badge" class="text-xs font-extrabold text-emerald-300">55.5 cm (21.8") • Medium Fit</span>
+          </div>
+          <input type="range" id="cap-scale-slider" min="51" max="61" step="0.5" value="55.5" oninput="updateMeasuringScales()" class="w-full accent-yellow-400 cursor-pointer">
+          <div class="flex justify-between text-[10px] text-blue-200 mt-1.5 font-semibold">
+            <span>51 cm (Petite)</span>
+            <span>55.5 cm (Standard Medium)</span>
+            <span>61 cm (Large)</span>
+          </div>
+          <p id="cap-fit-explanation" class="text-xs text-blue-100 mt-2">
+            ✓ <strong>Glueless Elastic Band Included:</strong> Fits comfortably with zero glue needed—easy to remove after your event!
+          </p>
+        </div>
+
+        <button onclick="addCustomMeasuredUnit()" class="w-full py-4 rounded-2xl gold-foil-btn font-extrabold text-xs sm:text-sm uppercase tracking-wider transition transform active:scale-95">
+          + Add This Measured Unit to My Rental Cart
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURATED RENTAL VAULT -->
+  <section id="rental-vault" class="max-w-7xl mx-auto px-4 pt-20 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <span class="text-xs uppercase tracking-[0.25em] text-yellow-300 font-bold">Ready-to-Wear 100% Human Hair Units</span>
+      <h2 class="font-royal text-3xl sm:text-5xl font-bold text-white mt-2">Signature Rental Collection</h2>
+      <p class="text-blue-100/80 text-sm mt-2">
+        Select your rental duration and currency (<strong class="text-yellow-300">USD $</strong> or <strong class="text-yellow-300">Rupees ₹</strong>) to see live pricing.
+      </p>
+
+      <!-- Rental Duration Selector -->
+      <div class="inline-flex bg-blue-950/90 p-1.5 rounded-2xl border border-yellow-400/30 mt-5 gap-1">
+        <button onclick="setDuration('day')" id="dur-day" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-yellow-400 text-slate-950 transition">1-Day Date / Event</button>
+        <button onclick="setDuration('weekend')" id="dur-weekend" class="px-4 py-2 rounded-xl text-xs font-bold text-blue-100 hover:text-white transition">Weekend (3 Days)</button>
+        <button onclick="setDuration('week')" id="dur-week" class="px-4 py-2 rounded-xl text-xs font-bold text-blue-100 hover:text-white transition">VIP Week (7 Days)</button>
+      </div>
+    </div>
+
+    <div id="rental-cards-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- INTERACTIVE RENTAL RESERVATION CART & WHATSAPP / CALL BOOKING -->
+  <section id="checkout-cart" class="max-w-7xl mx-auto px-4 pt-20 pb-16 relative z-10">
+    <div class="royal-glass rounded-3xl p-6 sm:p-8 grid lg:grid-cols-12 gap-8">
+      <!-- Left: Cart Items & Event Details -->
+      <div class="lg:col-span-7 space-y-5">
+        <div class="flex items-center justify-between border-b border-yellow-400/20 pb-4">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-yellow-300 font-bold">Instant Reservation • Contact Eddie</span>
+            <h2 class="font-royal text-2xl sm:text-3xl font-bold text-white">Your Hair Rental Cart</h2>
+          </div>
+          <button onclick="clearRentalCart()" class="text-xs text-rose-300 hover:underline font-semibold">Clear Cart</button>
+        </div>
+
+        <div id="rental-cart-list" class="space-y-3 min-h-[110px]"></div>
+
+        <div class="grid sm:grid-cols-2 gap-3 pt-2">
+          <input type="text" id="renter-name" placeholder="Your Full Name" class="bg-[#050d24] border border-yellow-400/30 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-yellow-400">
+          <input type="date" id="event-date" class="bg-[#050d24] border border-yellow-400/30 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-yellow-400">
+        </div>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <select id="event-occasion-select" class="bg-[#050d24] border border-yellow-400/30 rounded-xl px-4 py-3 text-sm text-white font-semibold focus:outline-none">
+            <option value="Date Night 🥂">🥂 Occasion: Date Night</option>
+            <option value="Party / Night Out 🎉">🎉 Occasion: Party / Birthday</option>
+            <option value="Wedding / Bridal 💍">💍 Occasion: Wedding / Bridal</option>
+            <option value="Graduation 🎓">🎓 Occasion: Graduation</option>
+            <option value="Corporate Event 💼">💼 Occasion: Corporate Event</option>
+          </select>
+          <select id="pickup-delivery-select" onchange="renderRentalCart()" class="bg-[#050d24] border border-yellow-400/30 rounded-xl px-4 py-3 text-sm text-white font-semibold focus:outline-none">
+            <option value="Pickup (Inquire Location via WhatsApp)|0">📍 Pickup (Ask Eddie for Location)</option>
+            <option value="Doorstep Delivery & Return|10">🚗 Doorstep Delivery & Return (+$10 / ₹850)</option>
+          </select>
+        </div>
+
+        <!-- Direct Location Inquiry Banner via WhatsApp -->
+        <div class="bg-[#050d24] border border-emerald-400/30 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div class="text-center sm:text-left">
+            <p class="text-xs font-bold text-emerald-300 uppercase tracking-wider">📍 Pickup & Delivery Location</p>
+            <p class="text-xs text-blue-100 mt-0.5">Message Eddie directly on WhatsApp (+231 77 020 9652) for our live pickup pin & delivery zones.</p>
+          </div>
+          <a href="https://wa.me/231770209652?text=Hello%20Eddie!%20%F0%9F%93%8D%20Please%20send%20me%20your%20exact%20pickup%20%2F%20delivery%20location%20for%20Aurelia%20Crown%20Rentals." target="_blank" rel="noopener" class="shrink-0 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs px-4 py-2.5 rounded-xl transition">
+            💬 Ask Location on WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Summary & Direct WhatsApp / Call Redirects to Eddie -->
+      <div class="lg:col-span-5 bg-[#050d24] border border-yellow-400/30 rounded-2xl p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+            <h3 class="font-royal text-xl font-bold text-yellow-300">Booking Breakdown</h3>
+            <span id="summary-curr-badge" class="text-[11px] font-extrabold bg-yellow-400/20 text-yellow-200 px-2.5 py-0.5 rounded-full">USD ($)</span>
+          </div>
+
+          <div class="space-y-2.5 text-xs sm:text-sm">
+            <div class="flex justify-between text-blue-100">
+              <span>Rental Fee (<span id="summary-duration-label">1-Day Event</span>):</span>
+              <strong id="summary-rental-fee" class="text-white">$0</strong>
+            </div>
+            <div class="flex justify-between text-blue-100">
+              <span>Handover / Delivery:</span>
+              <strong id="summary-delivery-fee" class="text-white">$0</strong>
+            </div>
+            <div class="flex justify-between text-emerald-300">
+              <span>Refundable Security Deposit*:</span>
+              <strong id="summary-deposit">$0</strong>
+            </div>
+            <p class="text-[11px] text-blue-300/75 pt-1">
+              *Security deposit is 100% refunded upon returning the unit in good condition without cutting the lace.
+            </p>
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-yellow-400/25 flex items-baseline justify-between">
+            <span class="text-xs uppercase tracking-wider text-yellow-200 font-bold">Total Due to Reserve</span>
+            <span id="summary-grand-total" class="font-royal text-3xl sm:text-4xl font-extrabold gold-text">$0</span>
+          </div>
+          <p id="summary-alt-currency" class="text-right text-[11px] text-blue-300 mt-1">≈ ₹0 INR</p>
+        </div>
+
+        <div class="space-y-3 mt-6">
+          <button onclick="bookViaWhatsApp()" class="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 transition transform active:scale-95">
+            <span>💬 Rent Today via WhatsApp (Eddie)</span>
+          </button>
+          <a href="tel:+231770209652" class="w-full py-3.5 rounded-2xl gold-foil-btn font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 transition">
+            <span>📞 Call Eddie: +231 77 020 9652</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-yellow-400/20 bg-[#02050f] py-10 px-4 text-center sm:text-left relative z-10">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="font-royal text-xl font-bold gold-text tracking-widest">AURELIA CROWN RENTALS</span>
+        <p class="font-script italic text-lg text-yellow-200">Step out in Style and Make a Lasting Impression! • Orders & Location: Eddie (+231 77 020 9652)</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="tel:+231770209652" class="px-5 py-2.5 rounded-full bg-blue-950 border border-yellow-400/40 text-yellow-200 text-xs font-bold hover:bg-yellow-400 hover:text-slate-950 transition">
+          📞 Call Eddie: +231 77 020 9652
+        </a>
+        <a href="https://wa.me/231770209652?text=Hello%20Eddie!%20Please%20share%20your%20location%20and%20available%20wigs." target="_blank" rel="noopener" class="px-5 py-2.5 rounded-full bg-emerald-500 text-slate-950 text-xs font-extrabold transition">
+          💬 WhatsApp Eddie (Orders & Location)
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Quick-Action Bar -->
+  <div class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-[#04091a]/95 backdrop-blur-lg border-t border-yellow-400/30 px-3 py-2.5 grid grid-cols-3 gap-2">
+    <a href="tel:+231770209652" class="bg-blue-950 border border-yellow-400/40 text-yellow-200 font-bold text-xs py-2.5 rounded-xl flex items-center justify-center gap-1">
+      <span>📞</span> Call Eddie
+    </a>
+    <a href="https://wa.me/231770209652?text=Hello%20Eddie!%20I'd%20like%20to%20rent%20a%20wig%20and%20confirm%20your%20location." target="_blank" rel="noopener" class="bg-emerald-500 text-slate-950 font-extrabold text-xs py-2.5 rounded-xl flex items-center justify-center gap-1">
+      <span>💬</span> WhatsApp
+    </a>
+    <button onclick="scrollToCart()" class="gold-foil-btn font-extrabold text-xs py-2.5 rounded-xl flex items-center justify-center gap-1">
+      <span>👜</span> Cart (<span id="mob-cart-count">0</span>)
+    </button>
+  </div>
+
+  <script>
+    // 1. Candlelight Bokeh Particles
+    const bokehLayer = document.getElementById('bokeh-layer');
+    for (let i = 0; i < 20; i++) {
+      const b = document.createElement('div');
+      b.className = 'bokeh';
+      const size = Math.random() * 14 + 5;
+      b.style.width = `${size}px`;
+      b.style.height = `${size}px`;
+      b.style.left = `${Math.random() * 100}%`;
+      b.style.top = `${Math.random() * 100}%`;
+      b.style.animationDuration = `${Math.random() * 5 + 3}s`;
+      b.style.animationDelay = `${Math.random() * 4}s`;
+      bokehLayer.appendChild(b);
+    }
+
+    // Dual Currency Configuration (USD $ & INR ₹ Rupees)
+    let activeCurrency = 'USD'; // 'USD' | 'INR'
+    const USD_TO_INR = 85;
+
+    function formatMoney(usdAmount) {
+      if (activeCurrency === 'USD') {
+        return `$${usdAmount.toLocaleString()}`;
+      }
+      const inr = Math.round(usdAmount * USD_TO_INR);
+      return `₹${inr.toLocaleString()}`;
+    }
+
+    function setCurrency(curr) {
+      activeCurrency = curr;
+      document.getElementById('curr-usd').className = curr === 'USD'
+        ? 'px-2.5 py-1.5 rounded-full bg-yellow-400 text-slate-950 transition'
+        : 'px-2.5 py-1.5 rounded-full text-yellow-200 hover:text-white transition';
+      document.getElementById('curr-inr').className = curr === 'INR'
+        ? 'px-2.5 py-1.5 rounded-full bg-yellow-400 text-slate-950 transition'
+        : 'px-2.5 py-1.5 rounded-full text-yellow-200 hover:text-white transition';
+
+      selectOccasion(activeOccasionIdx);
+      updateMeasuringScales();
+      renderRentalCards();
+      renderRentalCart();
+    }
+
+    // 2. Occasion Matchmaker Data & Explanations
+    const occasionsData = [
+      {
+        id: 'dates',
+        label: 'Dates',
+        icon: '🥂',
+        headline: 'Romantic Date Night — Soft, Touchable Bounce',
+        recommendedUnit: '22" Hollywood Body Wave (13x4 HD Lace)',
+        inches: 22,
+        why: 'Candlelight catches loose S-waves effortlessly. Soft, silky, and lightweight so it frames your face with natural movement across the dinner table without feeling heavy.',
+        priceDayUSD: 25
+      },
+      {
+        id: 'parties',
+        label: 'Parties',
+        icon: '🎉',
+        headline: 'VIP Party & Birthday — High-Drama Volume',
+        recommendedUnit: '26" Deep Water Wave / Sleek Barbie Ponytail',
+        inches: 26,
+        why: 'Designed for flash photography and dancing all night. Deep water curls hold maximum volume, while our 360 sleek high ponytail keeps your neck cool on the dance floor.',
+        priceDayUSD: 30
+      },
+      {
+        id: 'weddings',
+        label: 'Weddings',
+        icon: '💍',
+        headline: 'Weddings & Bridal — Undetectable HD Melt',
+        recommendedUnit: '24" Silky Bone Straight / Bridal Half-Up Curl',
+        inches: 24,
+        why: 'Whether you are the bride, bridesmaid, or VIP guest, ultra-thin HD lace melts seamlessly into every skin tone for close-up outdoor & indoor wedding portraits.',
+        priceDayUSD: 35
+      },
+      {
+        id: 'graduations',
+        label: 'Graduations',
+        icon: '🎓',
+        headline: 'Graduation Ceremony — Cap-Friendly Perfection',
+        recommendedUnit: '18" Glass-Silk Bone Straight Middle Part',
+        inches: 18,
+        why: 'Flat, sleek roots sit neatly underneath a graduation mortarboard cap without bulges, draping smoothly over your academic gown and sash for family photos.',
+        priceDayUSD: 22
+      },
+      {
+        id: 'corporate',
+        label: 'Corporate',
+        icon: '💼',
+        headline: 'Corporate Events — Polished Executive Grace',
+        recommendedUnit: '14" Blunt Cut Silk Bob / 18" Natural Yaki',
+        inches: 14,
+        why: 'Clean, structured, and refined. Delivers effortless boardroom authority and gala sophistication with zero flyaways.',
+        priceDayUSD: 20
+      }
+    ];
+
+    let activeOccasionIdx = 0;
+
+    function selectOccasion(idx) {
+      activeOccasionIdx = idx;
+      const btnsEl = document.getElementById('occasion-buttons');
+      btnsEl.innerHTML = occasionsData.map((o, i) => `
+        <button onclick="selectOccasion(${i})" class="py-2.5 px-1 rounded-xl text-center transition border ${
+          i === idx
+            ? 'bg-yellow-400 text-slate-950 border-yellow-300 font-extrabold shadow-lg'
+            : 'bg-blue-950/70 text-blue-100 border-white/10 hover:border-yellow-400/40 font-semibold'
+        }">
+          <span class="text-lg block">${o.icon}</span>
+          <span class="text-[10px] block mt-0.5">${o.label}</span>
+        </button>
+      `).join('');
+
+      const item = occasionsData[idx];
+      document.getElementById('occasion-panel').innerHTML = `
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] uppercase tracking-wider text-yellow-300 font-bold">Stylist Recommendation</span>
+          <span class="text-xs font-extrabold bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded-full">From ${formatMoney(item.priceDayUSD)}/day</span>
+        </div>
+        <h3 class="font-royal text-lg sm:text-xl font-bold text-white leading-snug">${item.headline}</h3>
+        <div class="bg-white/5 border border-yellow-400/20 rounded-xl p-3">
+          <span class="text-[10px] text-blue-300 uppercase block">Best Match Unit:</span>
+          <strong class="text-sm text-yellow-200">${item.recommendedUnit}</strong>
+        </div>
+        <p class="text-xs text-blue-100/90 leading-relaxed"><strong>Why this hair fits:</strong> ${item.why}</p>
+        <button onclick="applyOccasionToScale(${idx})" class="w-full py-3 rounded-xl gold-foil-btn text-xs font-extrabold uppercase tracking-wider transition">
+          Preview ${item.inches}" on Measuring Scale & Book →
+        </button>
+      `;
+    }
+
+    function applyOccasionToScale(idx) {
+      const item = occasionsData[idx];
+      document.getElementById('length-scale-slider').value = item.inches;
+      document.getElementById('event-occasion-select').selectedIndex = idx;
+      updateMeasuringScales();
+      document.getElementById('measuring-studio').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 3. Interactive Hair Length & Head Cap Measuring Scales
+    function updateMeasuringScales() {
+      const inches = parseInt(document.getElementById('length-scale-slider').value, 10);
+      const cm = parseFloat(document.getElementById('cap-scale-slider').value);
+      const headIn = (cm / 2.54).toFixed(1);
+
+      const yBottom = 64 + ((inches - 12) / 22) * 168;
+      const spread = 96 + ((inches - 12) / 22) * 14;
+      const leftX = 140 - spread;
+      document.getElementById('scale-hair-path').setAttribute('d', `M46 36 Q70 8 94 36 L${spread} ${yBottom} Q70 ${yBottom + 10} ${leftX} ${yBottom} Z`);
+      document.getElementById('ruler-marker').setAttribute('cy', yBottom);
+
+      document.getElementById('scale-inch-display').textContent = `${inches} Inches`;
+
+      let zone = 'Mid-Back Glamour';
+      let tip = 'Ideal for date nights & photos—moves effortlessly without tangling.';
+      let dayRateUSD = 25;
+
+      if (inches <= 14) {
+        zone = 'Chin to Collarbone Bob';
+        tip = 'Chic, lightweight, and executive—zero collar friction for corporate events or graduations.';
+        dayRateUSD = 20;
+      } else if (inches <= 18) {
+        zone = 'Shoulder / Upper-Back';
+        tip = 'The golden sweet spot—full luxury volume that stays neat all night.';
+        dayRateUSD = 22;
+      } else if (inches <= 24) {
+        zone = 'Mid-Back Glamour';
+        tip = 'Our #1 rented length for dates, weddings, and birthday dinners.';
+        dayRateUSD = 25;
+      } else if (inches <= 28) {
+        zone = 'Waist-Length Showstopper';
+        tip = 'Red-carpet drama for parties, matric farewells, and VIP photo shoots.';
+        dayRateUSD = 32;
+      } else {
+        zone = 'Hip-Length Bussdown';
+        tip = 'Maximum goddess length—guaranteed to turn every head in the room.';
+        dayRateUSD = 40;
+      }
+
+      document.getElementById('scale-body-zone').textContent = zone;
+      document.getElementById('scale-tip').textContent = tip;
+      document.getElementById('scale-rate-preview').textContent = `Rental from ${formatMoney(dayRateUSD)} / day`;
+
+      let capSize = 'Medium Fit';
+      if (cm <= 54) capSize = 'Small / Petite Fit';
+      else if (cm >= 58) capSize = 'Large Fit';
+      document.getElementById('cap-cm-badge').textContent = `${cm} cm (${headIn}") • ${capSize}`;
+    }
+
+    // 4. Signature Rental Vault Units (Base amounts in USD, auto-converted to INR ₹)
+    const rentalUnits = [
+      {
+        name: 'Hollywood Body Wave 13x4 HD',
+        specs: '22" • 200% Density • 100% Virgin Human Hair',
+        bestFor: 'Dates & Weddings',
+        day: 25, weekend: 45, week: 75, deposit: 35
+      },
+      {
+        name: 'Glass-Silk Bone Straight',
+        specs: '20" • Double Drawn • Sleek Middle/Side Part',
+        bestFor: 'Graduations & Corporate',
+        day: 24, weekend: 44, week: 72, deposit: 35
+      },
+      {
+        name: 'Deep Water Wave Goddess',
+        specs: '24" • Wet & Wavy Curls • Pre-Plucked Hairline',
+        bestFor: 'Parties & Birthdays',
+        day: 28, weekend: 50, week: 85, deposit: 40
+      },
+      {
+        name: '360° Sleek High Ponytail Unit',
+        specs: '26" • Baby-Hair Melt • Dance-Floor Proof',
+        bestFor: 'Parties & Night Out',
+        day: 26, weekend: 48, week: 80, deposit: 35
+      },
+      {
+        name: 'Executive Blunt-Cut Silk Bob',
+        specs: '14" • Glueless Wear-and-Go • Razor Sharp',
+        bestFor: 'Corporate & Dinner Dates',
+        day: 20, weekend: 36, week: 60, deposit: 30
+      },
+      {
+        name: '32" Royal Bussdown Body Wave',
+        specs: '32" • 250% Extra Full • Showstopper Unit',
+        bestFor: 'Weddings & VIP Galas',
+        day: 38, weekend: 68, week: 115, deposit: 50
+      }
+    ];
+
+    let rentalDuration = 'day';
+
+    function setDuration(dur) {
+      rentalDuration = dur;
+      ['day', 'weekend', 'week'].forEach(d => {
+        document.getElementById('dur-' + d).className = d === dur
+          ? 'px-4 py-2 rounded-xl text-xs font-extrabold bg-yellow-400 text-slate-950 transition'
+          : 'px-4 py-2 rounded-xl text-xs font-bold text-blue-100 hover:text-white transition';
+      });
+      renderRentalCards();
+      renderRentalCart();
+    }
+
+    function renderRentalCards() {
+      const grid = document.getElementById('rental-cards-grid');
+      const durSuffix = rentalDuration === 'day' ? '/ 1 Day' : (rentalDuration === 'weekend' ? '/ Weekend' : '/ 7 Days');
+
+      grid.innerHTML = rentalUnits.map((u, idx) => {
+        const rateUSD = u[rentalDuration];
+        return `
+          <div class="royal-glass rounded-3xl p-6 flex flex-col justify-between hover:border-yellow-400/65 transition">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-[10px] uppercase tracking-wider bg-yellow-400/15 border border-yellow-400/30 text-yellow-200 px-3 py-1 rounded-full font-bold">
+                  Best for: ${u.bestFor}
+                </span>
+                <span class="text-xs text-emerald-300 font-bold">100% Human</span>
+              </div>
+              <h3 class="font-royal text-xl font-bold text-white leading-snug mb-1.5">${u.name}</h3>
+              <p class="text-xs text-blue-200/80 mb-4">${u.specs}</p>
+              <div class="bg-[#050d24] rounded-2xl p-3.5 border border-white/10 mb-5 flex items-baseline justify-between">
+                <div>
+                  <span class="font-royal text-3xl font-extrabold gold-text">${formatMoney(rateUSD)}</span>
+                  <span class="text-xs text-blue-200 font-semibold">${durSuffix}</span>
+                </div>
+                <span class="text-[11px] text-emerald-300">+${formatMoney(u.deposit)} ref. deposit</span>
+              </div>
+            </div>
+            <button onclick="addUnitToCart(${idx})" class="w-full py-3 rounded-xl gold-foil-btn font-extrabold text-xs uppercase tracking-wider transition transform active:scale-95">
+              + Add to Rental Cart
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // 5. Rental Cart & WhatsApp Booking (Eddie +231 77 020 9652)
+    let rentalCart = [];
+
+    function addUnitToCart(idx) {
+      const u = rentalUnits[idx];
+      rentalCart.push({
+        name: u.name,
+        day: u.day,
+        weekend: u.weekend,
+        week: u.week,
+        deposit: u.deposit
+      });
+      renderRentalCart();
+      showToast(`Added "${u.name}" to your Rental Cart`);
+    }
+
+    function addCustomMeasuredUnit() {
+      const inches = parseInt(document.getElementById('length-scale-slider').value, 10);
+      const capText = document.getElementById('cap-cm-badge').textContent;
+      const baseDay = inches <= 14 ? 20 : (inches <= 18 ? 22 : (inches <= 24 ? 25 : (inches <= 28 ? 32 : 40)));
+      rentalCart.push({
+        name: `Custom Measured ${inches}" 100% Human Hair (${capText})`,
+        day: baseDay,
+        weekend: Math.round(baseDay * 1.8),
+        week: Math.round(baseDay * 3),
+        deposit: 35
+      });
+      renderRentalCart();
+      scrollToCart();
+    }
+
+    function removeCartItem(i) { rentalCart.splice(i, 1); renderRentalCart(); }
+    function clearRentalCart() { rentalCart = []; renderRentalCart(); }
+    function scrollToCart() { document.getElementById('checkout-cart').scrollIntoView({ behavior: 'smooth' }); }
+
+    function renderRentalCart() {
+      document.getElementById('nav-cart-count').textContent = rentalCart.length;
+      document.getElementById('mob-cart-count').textContent = rentalCart.length;
+      document.getElementById('summary-curr-badge').textContent = activeCurrency === 'USD' ? 'USD ($)' : 'Rupees (₹)';
+
+      const durLabel = rentalDuration === 'day' ? '1-Day Event' : (rentalDuration === 'weekend' ? 'Weekend (3 Days)' : 'VIP Week (7 Days)');
+      document.getElementById('summary-duration-label').textContent = durLabel;
+
+      const deliveryParts = document.getElementById('pickup-delivery-select').value.split('|');
+      const deliveryFeeUSD = parseInt(deliveryParts[1], 10);
+
+      const listEl = document.getElementById('rental-cart-list');
+      if (!rentalCart.length) {
+        listEl.innerHTML = `<div class="bg-[#050d24] border border-dashed border-yellow-400/30 rounded-2xl p-6 text-center text-xs text-blue-200">Your rental cart is empty. Select a wig from the collection above or use the Measuring Scale!</div>`;
+        document.getElementById('summary-rental-fee').textContent = formatMoney(0);
+        document.getElementById('summary-delivery-fee').textContent = formatMoney(deliveryFeeUSD);
+        document.getElementById('summary-deposit').textContent = formatMoney(0);
+        document.getElementById('summary-grand-total').textContent = formatMoney(0);
+        document.getElementById('summary-alt-currency').textContent = activeCurrency === 'USD' ? '≈ ₹0 INR' : '≈ $0 USD';
+        return;
+      }
+
+      let rentalSumUSD = 0;
+      let depositSumUSD = 0;
+
+      listEl.innerHTML = rentalCart.map((item, i) => {
+        const rateUSD = item[rentalDuration];
+        rentalSumUSD += rateUSD;
+        depositSumUSD += item.deposit;
+        return `
+          <div class="flex items-center justify-between gap-3 bg-[#050d24] border border-yellow-400/20 p-3.5 rounded-xl">
+            <div>
+              <p class="text-sm font-bold text-white">${item.name}</p>
+              <p class="text-[11px] text-yellow-300">${formatMoney(rateUSD)} (${durLabel}) + ${formatMoney(item.deposit)} refundable deposit</p>
+            </div>
+            <button onclick="removeCartItem(${i})" class="text-xs text-rose-400 hover:text-rose-300 font-bold px-2 py-1">✕</button>
+          </div>
+        `;
+      }).join('');
+
+      const totalUSD = rentalSumUSD + deliveryFeeUSD + depositSumUSD;
+      const totalINR = Math.round(totalUSD * USD_TO_INR);
+
+      document.getElementById('summary-rental-fee').textContent = formatMoney(rentalSumUSD);
+      document.getElementById('summary-delivery-fee').textContent = deliveryFeeUSD === 0 ? `FREE (${formatMoney(0)})` : formatMoney(deliveryFeeUSD);
+      document.getElementById('summary-deposit').textContent = formatMoney(depositSumUSD);
+      document.getElementById('summary-grand-total').textContent = formatMoney(totalUSD);
+      document.getElementById('summary-alt-currency').textContent = activeCurrency === 'USD'
+        ? `≈ ₹${totalINR.toLocaleString()} Rupees`
+        : `≈ $${totalUSD.toLocaleString()} USD`;
+    }
+
+    function bookViaWhatsApp() {
+      const name = document.getElementById('renter-name').value.trim() || 'VIP Client';
+      const eventDate = document.getElementById('event-date').value || 'Upcoming Event';
+      const occasion = document.getElementById('event-occasion-select').value;
+      const delivery = document.getElementById('pickup-delivery-select').value.split('|')[0];
+      const capFit = document.getElementById('cap-cm-badge').textContent;
+      const durLabel = document.getElementById('summary-duration-label').textContent;
+      const grandTotal = document.getElementById('summary-grand-total').textContent;
+      const altCurr = document.getElementById('summary-alt-currency').textContent;
+
+      let msg = `Hello Eddie at Aurelia Crown Rentals! 👑✨\nI'd like to book a *100% HUMAN HAIR RENTAL* and confirm your pickup/delivery location:\n\n`;
+      msg += `*Name:* ${name}\n`;
+      msg += `*Occasion:* ${occasion}\n`;
+      msg += `*Event Date:* ${eventDate}\n`;
+      msg += `*Rental Duration:* ${durLabel}\n`;
+      msg += `*Head Measurement:* ${capFit}\n`;
+      msg += `*Handover:* ${delivery}\n\n`;
+
+      if (rentalCart.length) {
+        msg += `*Selected Units:*\n`;
+        rentalCart.forEach(item => {
+          msg += `• ${item.name} (${formatMoney(item[rentalDuration])} + ${formatMoney(item.deposit)} deposit)\n`;
+        });
+        msg += `\n*Total Due to Reserve:* ${grandTotal} (${altCurr})\n`;
+      } else {
+        msg += `Please share your location and help me choose a unit for my event!\n`;
+      }
+
+      const url = `https://wa.me/231770209652?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+
+    function showToast(text) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed top-20 right-4 z-50 bg-yellow-400 text-slate-950 font-extrabold text-xs px-4 py-3 rounded-xl shadow-2xl';
+      toast.textContent = '👑 ' + text;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 2400);
+    }
+
+    // Initialize All Interactive Modules
+    selectOccasion(0);
+    updateMeasuringScales();
+    renderRentalCards();
+    renderRentalCart();
+  </script>
+</body>
+          </html>
