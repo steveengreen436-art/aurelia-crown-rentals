@@ -14,11 +14,14 @@
       --gold-mid: #eab308;
       --gold-deep: #b45309;
     }
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: radial-gradient(circle at top center, #0c2154 0%, #04091a 55%, #02050f 100%);
       color: #f8fafc;
-      overflow-x: hidden;
       padding-bottom: 80px;
     }
     @media (min-width: 768px) {
@@ -68,25 +71,27 @@
   <div id="bokeh-layer" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
 
   <!-- Top VIP Ribbon -->
-  <div class="bg-gradient-to-r from-[#061230] via-[#132c6b] to-[#061230] border-b border-yellow-400/30 text-yellow-200 text-[11px] sm:text-xs py-2 px-4 text-center relative z-50 tracking-wide">
+  <div class="bg-gradient-to-r from-[#061230] via-[#132c6b] to-[#061230] border-b border-yellow-400/30 text-yellow-200 text-[10px] sm:text-xs py-2 px-3 text-center relative z-50 tracking-wide leading-snug">
     👑 <strong>100% HUMAN HAIR FOR RENT</strong> • Sanitized, Silk-Pressed & Ready-to-Wear • Contact Eddie: <strong>+231 77 020 9652</strong>
   </div>
 
-  <!-- Sticky Royal Header -->
-  <nav class="sticky top-0 z-50 bg-[#04091a]/90 backdrop-blur-xl border-b border-yellow-400/20">
-    <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between gap-2">
-      <a href="#" class="flex items-center gap-3 shrink-0">
-        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-300 via-amber-500 to-yellow-200 p-[2px] shadow-lg shadow-yellow-500/25">
-          <div class="w-full h-full bg-[#06112b] rounded-full flex items-center justify-center font-royal font-extrabold text-lg text-yellow-300">
+  <!-- Sticky Royal Header (Portrait-Safe Responsive Layout) -->
+  <nav class="sticky top-0 z-50 bg-[#04091a]/95 backdrop-blur-xl border-b border-yellow-400/20">
+    <div class="max-w-7xl mx-auto px-2.5 sm:px-4 py-2.5 sm:py-3.5 flex items-center justify-between gap-1.5 sm:gap-2">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2 min-w-0">
+        <div class="w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-full bg-gradient-to-tr from-yellow-300 via-amber-500 to-yellow-200 p-[2px] shadow-lg shadow-yellow-500/25">
+          <div class="w-full h-full bg-[#06112b] rounded-full flex items-center justify-center font-royal font-extrabold text-sm sm:text-lg text-yellow-300">
             AC
           </div>
         </div>
-        <div>
-          <span class="font-royal text-base sm:text-xl font-bold tracking-[0.12em] gold-text block leading-none">AURELIA CROWN</span>
-          <span class="text-[9px] uppercase tracking-[0.26em] text-blue-200/80 font-semibold">100% Human Hair Rentals</span>
+        <div class="min-w-0">
+          <span class="font-royal text-xs sm:text-xl font-bold tracking-[0.06em] sm:tracking-[0.12em] gold-text block leading-tight truncate">AURELIA CROWN</span>
+          <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.14em] sm:tracking-[0.26em] text-blue-200/80 font-semibold block truncate">100% Human Hair Rentals</span>
         </div>
       </a>
 
+      <!-- Desktop Section Tabs -->
       <div class="hidden xl:flex items-center gap-6 text-xs uppercase tracking-widest font-semibold text-blue-100">
         <a href="#occasions" class="hover:text-yellow-300 transition">Occasion Stylist</a>
         <a href="#measuring-studio" class="hover:text-yellow-300 transition">Length & Cap Scale</a>
@@ -95,43 +100,51 @@
       </div>
 
       <!-- Currency Toggle, Direct Call, WhatsApp & Rental Cart Buttons -->
-      <div class="flex items-center gap-1.5 sm:gap-2">
+      <div class="flex items-center gap-1 sm:gap-2 shrink-0">
         <!-- USD / INR Rupees Toggle -->
-        <div class="flex bg-blue-950/90 border border-yellow-400/35 rounded-full p-0.5 text-[11px] font-extrabold">
-          <button onclick="setCurrency('USD')" id="curr-usd" class="px-2.5 py-1.5 rounded-full bg-yellow-400 text-slate-950 transition">USD $</button>
-          <button onclick="setCurrency('INR')" id="curr-inr" class="px-2.5 py-1.5 rounded-full text-yellow-200 hover:text-white transition">INR ₹</button>
+        <div class="flex bg-blue-950/90 border border-yellow-400/35 rounded-full p-0.5 text-[9px] sm:text-[11px] font-extrabold">
+          <button onclick="setCurrency('USD')" id="curr-usd" class="px-1.5 sm:px-2.5 py-1 sm:py-1.5 rounded-full bg-yellow-400 text-slate-950 transition whitespace-nowrap">USD $</button>
+          <button onclick="setCurrency('INR')" id="curr-inr" class="px-1.5 sm:px-2.5 py-1 sm:py-1.5 rounded-full text-yellow-200 hover:text-white transition whitespace-nowrap">INR ₹</button>
         </div>
 
-        <a href="tel:+231770209652" title="Call Eddie +231 77 020 9652" class="bg-blue-950/90 hover:bg-yellow-400 hover:text-slate-950 border border-yellow-400/40 text-yellow-300 text-xs font-bold px-3 py-2.5 rounded-full flex items-center gap-1.5 transition">
+        <a href="tel:+231770209652" title="Call Eddie +231 77 020 9652" class="bg-blue-950/90 hover:bg-yellow-400 hover:text-slate-950 border border-yellow-400/40 text-yellow-300 text-xs font-bold p-2 sm:px-3 sm:py-2.5 rounded-full flex items-center gap-1.5 transition">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
           <span class="hidden sm:inline">Call</span>
         </a>
 
-        <a href="https://wa.me/231770209652?text=Hello%20Eddie%20at%20Aurelia%20Crown%20Rentals!%20%F0%9F%91%91%20I%20have%20an%20upcoming%20event%20and%20would%20like%20to%20rent%20a%20100%25%20Human%20Hair%20unit." target="_blank" rel="noopener" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold px-3 py-2.5 rounded-full shadow-lg shadow-emerald-500/20 flex items-center gap-1.5 transition">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.03 2c-5.52 0-10 4.48-10 10 0 1.76.46 3.48 1.34 5L2 22l5.15-1.35c1.48.81 3.16 1.24 4.88 1.24h.01c5.52 0 10-4.48 10-10 0-2.67-1.04-5.18-2.93-7.07A9.93 9.93 0 0012.03 2zm5.82 14.28c-.25.7-1.44 1.34-1.99 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.69-.63-2.98-1.29-4.92-4.29-5.07-4.49-.15-.2-1.21-1.61-1.21-3.07 0-1.46.76-2.18 1.03-2.48.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.08.15.13.33.03.53-.1.2-.15.33-.3.5-.15.18-.31.4-.45.53-.15.15-.3.31-.13.61.18.3.78 1.29 1.68 2.09 1.15 1.03 2.13 1.35 2.43 1.5.3.15.48.13.65-.08.18-.2.75-.88.95-1.18.2-.3.4-.25.67-.15.28.1 1.75.83 2.05.98.3.15.5.22.57.35.08.12.08.72-.17 1.42z"/></svg>
+        <a href="https://wa.me/231770209652?text=Hello%20Eddie%20at%20Aurelia%20Crown%20Rentals!%20%F0%9F%91%91%20I%20have%20an%20upcoming%20event%20and%20would%20like%20to%20rent%20a%20100%25%20Human%20Hair%20unit." target="_blank" rel="noopener" title="WhatsApp Eddie" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold p-2 sm:px-3 sm:py-2.5 rounded-full shadow-lg shadow-emerald-500/20 flex items-center gap-1.5 transition">
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24"><path d="M12.03 2c-5.52 0-10 4.48-10 10 0 1.76.46 3.48 1.34 5L2 22l5.15-1.35c1.48.81 3.16 1.24 4.88 1.24h.01c5.52 0 10-4.48 10-10 0-2.67-1.04-5.18-2.93-7.07A9.93 9.93 0 0012.03 2zm5.82 14.28c-.25.7-1.44 1.34-1.99 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.69-.63-2.98-1.29-4.92-4.29-5.07-4.49-.15-.2-1.21-1.61-1.21-3.07 0-1.46.76-2.18 1.03-2.48.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.08.15.13.33.03.53-.1.2-.15.33-.3.5-.15.18-.31.4-.45.53-.15.15-.3.31-.13.61.18.3.78 1.29 1.68 2.09 1.15 1.03 2.13 1.35 2.43 1.5.3.15.48.13.65-.08.18-.2.75-.88.95-1.18.2-.3.4-.25.67-.15.28.1 1.75.83 2.05.98.3.15.5.22.57.35.08.12.08.72-.17 1.42z"/></svg>
           <span class="hidden md:inline">WhatsApp</span>
         </a>
 
-        <button onclick="scrollToCart()" class="gold-foil-btn text-xs font-extrabold px-3.5 py-2.5 rounded-full flex items-center gap-1.5 transition transform active:scale-95">
+        <button onclick="scrollToCart()" class="gold-foil-btn text-[11px] sm:text-xs font-extrabold px-2.5 py-2 sm:px-3.5 sm:py-2.5 rounded-full flex items-center gap-1 transition transform active:scale-95">
           <span>👜</span>
           <span id="nav-cart-count">0</span>
         </button>
       </div>
     </div>
+
+    <!-- Mobile & Tablet Portrait Quick-Jump Tabs Bar -->
+    <div class="xl:hidden border-t border-yellow-400/15 bg-[#06112b]/90 px-2 py-1.5 grid grid-cols-4 gap-1 text-center text-[10px] font-bold tracking-wide text-blue-100">
+      <a href="#occasions" class="py-1 rounded-lg bg-white/5 hover:bg-yellow-400 hover:text-slate-950 transition truncate">Occasions</a>
+      <a href="#measuring-studio" class="py-1 rounded-lg bg-white/5 hover:bg-yellow-400 hover:text-slate-950 transition truncate">Length Scale</a>
+      <a href="#rental-vault" class="py-1 rounded-lg bg-white/5 hover:bg-yellow-400 hover:text-slate-950 transition truncate">Wig Vault</a>
+      <a href="#checkout-cart" class="py-1 rounded-lg bg-white/5 hover:bg-yellow-400 hover:text-slate-950 transition truncate">Booking Cart</a>
+    </div>
   </nav>
 
   <!-- Hero Section -->
-  <header class="relative pt-10 pb-20 px-4 overflow-hidden">
+  <header class="relative pt-8 sm:pt-10 pb-20 px-4 overflow-hidden">
     <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center relative z-10">
       <div class="lg:col-span-7 text-center lg:text-left">
-        <div class="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/40 px-4 py-1.5 rounded-full text-xs text-yellow-200 font-bold mb-5">
+        <div class="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/40 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs text-yellow-200 font-bold mb-5">
           <span>★★★★★</span>
           <span>PREMIUM QUALITY • 100% HUMAN HAIR • AFFORDABLE RENTAL</span>
         </div>
 
-        <h1 class="font-royal text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.03] tracking-tight mb-3">
+        <h1 class="font-royal text-3xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-3">
           <span class="gold-text block">100% HUMAN HAIR</span>
-          <span class="inline-block bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-500 text-slate-950 px-5 py-1 rounded-xl text-2xl sm:text-4xl mt-2 shadow-xl">
+          <span class="inline-block bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-500 text-slate-950 px-5 py-1 rounded-xl text-xl sm:text-4xl mt-2 shadow-xl">
             FOR RENT
           </span>
         </h1>
@@ -168,7 +181,7 @@
 
       <!-- Right Interactive Occasion & Hair Matchmaker Card -->
       <div id="occasions" class="lg:col-span-5">
-        <div class="royal-glass rounded-[2rem] p-6 relative">
+        <div class="royal-glass rounded-[2rem] p-5 sm:p-6 relative">
           <div class="flex items-center justify-between border-b border-yellow-400/20 pb-3 mb-4">
             <div>
               <span class="text-[10px] uppercase tracking-[0.25em] text-yellow-300 font-bold">AI Occasion Concierge</span>
@@ -181,7 +194,7 @@
           <div class="grid grid-cols-5 gap-1.5 mb-4" id="occasion-buttons"></div>
 
           <!-- Dynamic Stylist Explanation Box -->
-          <div id="occasion-panel" class="bg-gradient-to-b from-[#0d2459] to-[#06112b] border border-yellow-400/25 rounded-2xl p-5 space-y-3">
+          <div id="occasion-panel" class="bg-gradient-to-b from-[#0d2459] to-[#06112b] border border-yellow-400/25 rounded-2xl p-4 sm:p-5 space-y-3">
             <!-- Populated by JS -->
           </div>
         </div>
@@ -199,10 +212,10 @@
       </p>
     </div>
 
-    <div class="royal-glass rounded-3xl p-6 sm:p-8 grid lg:grid-cols-12 gap-8 items-center">
+    <div class="royal-glass rounded-3xl p-5 sm:p-8 grid lg:grid-cols-12 gap-8 items-center">
       <!-- Left: Visual Silhouette & Vertical Measuring Ruler -->
-      <div class="lg:col-span-5 bg-[#050d24] rounded-2xl p-5 border border-yellow-400/20 flex items-center justify-around">
-        <svg viewBox="0 0 160 250" class="w-40 h-60">
+      <div class="lg:col-span-5 bg-[#050d24] rounded-2xl p-4 sm:p-5 border border-yellow-400/20 flex items-center justify-around gap-2">
+        <svg viewBox="0 0 160 250" class="w-36 sm:w-40 h-56 sm:h-60 shrink-0">
           <circle cx="70" cy="40" r="21" fill="#172e66" stroke="#facc15" stroke-width="1.5"/>
           <path d="M34 95 Q70 76 106 95 L115 152 L25 152 Z" fill="#0f214d" stroke="#3b82f6" stroke-width="1"/>
           <path id="scale-hair-path" class="hair-silhouette" d="M46 36 Q70 8 94 36 L106 146 Q70 156 34 146 Z" fill="url(#royalHairGrad)" opacity="0.95"/>
@@ -225,7 +238,7 @@
         <div class="space-y-3 text-left max-w-[165px]">
           <div>
             <span class="text-[10px] uppercase tracking-wider text-blue-300">Selected Length</span>
-            <p id="scale-inch-display" class="font-royal text-3xl font-extrabold gold-text">22 Inches</p>
+            <p id="scale-inch-display" class="font-royal text-2xl sm:text-3xl font-extrabold gold-text">22 Inches</p>
             <p id="scale-body-zone" class="text-xs text-yellow-200 font-semibold">Mid-Back Glamour</p>
           </div>
           <div class="bg-blue-950/90 p-3 rounded-xl border border-yellow-400/20">
@@ -237,9 +250,9 @@
 
       <!-- Right: Dual Interactive Measuring Scales -->
       <div class="lg:col-span-7 space-y-6">
-        <div class="bg-blue-950/60 p-5 rounded-2xl border border-yellow-400/20">
-          <div class="flex justify-between items-center mb-2">
-            <span class="text-xs font-extrabold uppercase tracking-wider text-yellow-300">1. Hair Length Measuring Scale (Inches)</span>
+        <div class="bg-blue-950/60 p-4 sm:p-5 rounded-2xl border border-yellow-400/20">
+          <div class="flex flex-wrap justify-between items-center gap-2 mb-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-yellow-300">1. Hair Length Scale (Inches)</span>
             <span id="scale-rate-preview" class="text-xs font-bold bg-yellow-400/20 text-yellow-200 px-3 py-1 rounded-full">Rental from $25 / day</span>
           </div>
           <input type="range" id="length-scale-slider" min="12" max="34" step="2" value="22" oninput="updateMeasuringScales()" class="w-full accent-yellow-400 cursor-pointer">
@@ -248,15 +261,15 @@
           </div>
         </div>
 
-        <div class="bg-blue-950/60 p-5 rounded-2xl border border-yellow-400/20">
-          <div class="flex justify-between items-center mb-2">
-            <span class="text-xs font-extrabold uppercase tracking-wider text-yellow-300">2. Head Cap Measuring Scale (cm / inches)</span>
+        <div class="bg-blue-950/60 p-4 sm:p-5 rounded-2xl border border-yellow-400/20">
+          <div class="flex flex-wrap justify-between items-center gap-2 mb-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-yellow-300">2. Head Cap Scale (cm / in)</span>
             <span id="cap-cm-badge" class="text-xs font-extrabold text-emerald-300">55.5 cm (21.8") • Medium Fit</span>
           </div>
           <input type="range" id="cap-scale-slider" min="51" max="61" step="0.5" value="55.5" oninput="updateMeasuringScales()" class="w-full accent-yellow-400 cursor-pointer">
           <div class="flex justify-between text-[10px] text-blue-200 mt-1.5 font-semibold">
             <span>51 cm (Petite)</span>
-            <span>55.5 cm (Standard Medium)</span>
+            <span>55.5 cm (Medium)</span>
             <span>61 cm (Large)</span>
           </div>
           <p id="cap-fit-explanation" class="text-xs text-blue-100 mt-2">
@@ -282,9 +295,9 @@
 
       <!-- Rental Duration Selector -->
       <div class="inline-flex bg-blue-950/90 p-1.5 rounded-2xl border border-yellow-400/30 mt-5 gap-1">
-        <button onclick="setDuration('day')" id="dur-day" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-yellow-400 text-slate-950 transition">1-Day Date / Event</button>
-        <button onclick="setDuration('weekend')" id="dur-weekend" class="px-4 py-2 rounded-xl text-xs font-bold text-blue-100 hover:text-white transition">Weekend (3 Days)</button>
-        <button onclick="setDuration('week')" id="dur-week" class="px-4 py-2 rounded-xl text-xs font-bold text-blue-100 hover:text-white transition">VIP Week (7 Days)</button>
+        <button onclick="setDuration('day')" id="dur-day" class="px-3 sm:px-4 py-2 rounded-xl text-[11px] sm:text-xs font-extrabold bg-yellow-400 text-slate-950 transition">1-Day Event</button>
+        <button onclick="setDuration('weekend')" id="dur-weekend" class="px-3 sm:px-4 py-2 rounded-xl text-[11px] sm:text-xs font-bold text-blue-100 hover:text-white transition">Weekend (3 Days)</button>
+        <button onclick="setDuration('week')" id="dur-week" class="px-3 sm:px-4 py-2 rounded-xl text-[11px] sm:text-xs font-bold text-blue-100 hover:text-white transition">VIP Week (7 Days)</button>
       </div>
     </div>
 
@@ -295,7 +308,7 @@
 
   <!-- INTERACTIVE RENTAL RESERVATION CART & WHATSAPP / CALL BOOKING -->
   <section id="checkout-cart" class="max-w-7xl mx-auto px-4 pt-20 pb-16 relative z-10">
-    <div class="royal-glass rounded-3xl p-6 sm:p-8 grid lg:grid-cols-12 gap-8">
+    <div class="royal-glass rounded-3xl p-5 sm:p-8 grid lg:grid-cols-12 gap-8">
       <!-- Left: Cart Items & Event Details -->
       <div class="lg:col-span-7 space-y-5">
         <div class="flex items-center justify-between border-b border-yellow-400/20 pb-4">
@@ -339,7 +352,7 @@
       </div>
 
       <!-- Right: Summary & Direct WhatsApp / Call Redirects to Eddie -->
-      <div class="lg:col-span-5 bg-[#050d24] border border-yellow-400/30 rounded-2xl p-6 flex flex-col justify-between">
+      <div class="lg:col-span-5 bg-[#050d24] border border-yellow-400/30 rounded-2xl p-5 sm:p-6 flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
             <h3 class="font-royal text-xl font-bold text-yellow-300">Booking Breakdown</h3>
@@ -402,7 +415,7 @@
   </footer>
 
   <!-- Mobile Bottom Quick-Action Bar -->
-  <div class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-[#04091a]/95 backdrop-blur-lg border-t border-yellow-400/30 px-3 py-2.5 grid grid-cols-3 gap-2">
+  <div class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-[#04091a]/95 backdrop-blur-lg border-t border-yellow-400/30 px-2.5 py-2 grid grid-cols-3 gap-2">
     <a href="tel:+231770209652" class="bg-blue-950 border border-yellow-400/40 text-yellow-200 font-bold text-xs py-2.5 rounded-xl flex items-center justify-center gap-1">
       <span>📞</span> Call Eddie
     </a>
@@ -431,7 +444,7 @@
     }
 
     // Dual Currency Configuration (USD $ & INR ₹ Rupees)
-    let activeCurrency = 'USD'; // 'USD' | 'INR'
+    let activeCurrency = 'USD';
     const USD_TO_INR = 85;
 
     function formatMoney(usdAmount) {
@@ -445,11 +458,11 @@
     function setCurrency(curr) {
       activeCurrency = curr;
       document.getElementById('curr-usd').className = curr === 'USD'
-        ? 'px-2.5 py-1.5 rounded-full bg-yellow-400 text-slate-950 transition'
-        : 'px-2.5 py-1.5 rounded-full text-yellow-200 hover:text-white transition';
+        ? 'px-1.5 sm:px-2.5 py-1 sm:py-1.5 rounded-full bg-yellow-400 text-slate-950 transition whitespace-nowrap'
+        : 'px-1.5 sm:px-2.5 py-1 sm:py-1.5 rounded-full text-yellow-200 hover:text-white transition whitespace-nowrap';
       document.getElementById('curr-inr').className = curr === 'INR'
-        ? 'px-2.5 py-1.5 rounded-full bg-yellow-400 text-slate-950 transition'
-        : 'px-2.5 py-1.5 rounded-full text-yellow-200 hover:text-white transition';
+        ? 'px-1.5 sm:px-2.5 py-1 sm:py-1.5 rounded-full bg-yellow-400 text-slate-950 transition whitespace-nowrap'
+        : 'px-1.5 sm:px-2.5 py-1 sm:py-1.5 rounded-full text-yellow-200 hover:text-white transition whitespace-nowrap';
 
       selectOccasion(activeOccasionIdx);
       updateMeasuringScales();
@@ -523,15 +536,15 @@
             : 'bg-blue-950/70 text-blue-100 border-white/10 hover:border-yellow-400/40 font-semibold'
         }">
           <span class="text-lg block">${o.icon}</span>
-          <span class="text-[10px] block mt-0.5">${o.label}</span>
+          <span class="text-[9px] sm:text-[10px] block mt-0.5 truncate">${o.label}</span>
         </button>
       `).join('');
 
       const item = occasionsData[idx];
       document.getElementById('occasion-panel').innerHTML = `
-        <div class="flex items-center justify-between">
-          <span class="text-[11px] uppercase tracking-wider text-yellow-300 font-bold">Stylist Recommendation</span>
-          <span class="text-xs font-extrabold bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded-full">From ${formatMoney(item.priceDayUSD)}/day</span>
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-yellow-300 font-bold">Stylist Recommendation</span>
+          <span class="text-xs font-extrabold bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded-full shrink-0">From ${formatMoney(item.priceDayUSD)}/day</span>
         </div>
         <h3 class="font-royal text-lg sm:text-xl font-bold text-white leading-snug">${item.headline}</h3>
         <div class="bg-white/5 border border-yellow-400/20 rounded-xl p-3">
@@ -603,7 +616,7 @@
       document.getElementById('cap-cm-badge').textContent = `${cm} cm (${headIn}") • ${capSize}`;
     }
 
-    // 4. Signature Rental Vault Units (Base amounts in USD, auto-converted to INR ₹)
+    // 4. Signature Rental Vault Units
     const rentalUnits = [
       {
         name: 'Hollywood Body Wave 13x4 HD',
@@ -649,8 +662,8 @@
       rentalDuration = dur;
       ['day', 'weekend', 'week'].forEach(d => {
         document.getElementById('dur-' + d).className = d === dur
-          ? 'px-4 py-2 rounded-xl text-xs font-extrabold bg-yellow-400 text-slate-950 transition'
-          : 'px-4 py-2 rounded-xl text-xs font-bold text-blue-100 hover:text-white transition';
+          ? 'px-3 sm:px-4 py-2 rounded-xl text-[11px] sm:text-xs font-extrabold bg-yellow-400 text-slate-950 transition'
+          : 'px-3 sm:px-4 py-2 rounded-xl text-[11px] sm:text-xs font-bold text-blue-100 hover:text-white transition';
       });
       renderRentalCards();
       renderRentalCart();
@@ -673,9 +686,9 @@
               </div>
               <h3 class="font-royal text-xl font-bold text-white leading-snug mb-1.5">${u.name}</h3>
               <p class="text-xs text-blue-200/80 mb-4">${u.specs}</p>
-              <div class="bg-[#050d24] rounded-2xl p-3.5 border border-white/10 mb-5 flex items-baseline justify-between">
+              <div class="bg-[#050d24] rounded-2xl p-3.5 border border-white/10 mb-5 flex items-baseline justify-between gap-2">
                 <div>
-                  <span class="font-royal text-3xl font-extrabold gold-text">${formatMoney(rateUSD)}</span>
+                  <span class="font-royal text-2xl sm:text-3xl font-extrabold gold-text">${formatMoney(rateUSD)}</span>
                   <span class="text-xs text-blue-200 font-semibold">${durSuffix}</span>
                 </div>
                 <span class="text-[11px] text-emerald-300">+${formatMoney(u.deposit)} ref. deposit</span>
@@ -810,7 +823,7 @@
 
     function showToast(text) {
       const toast = document.createElement('div');
-      toast.className = 'fixed top-20 right-4 z-50 bg-yellow-400 text-slate-950 font-extrabold text-xs px-4 py-3 rounded-xl shadow-2xl';
+      toast.className = 'fixed top-24 right-3 z-50 bg-yellow-400 text-slate-950 font-extrabold text-xs px-4 py-3 rounded-xl shadow-2xl max-w-[90vw]';
       toast.textContent = '👑 ' + text;
       document.body.appendChild(toast);
       setTimeout(() => toast.remove(), 2400);
@@ -823,4 +836,4 @@
     renderRentalCart();
   </script>
 </body>
-          </html>
+  </html>
